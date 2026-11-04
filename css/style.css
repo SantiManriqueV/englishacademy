@@ -1,0 +1,575 @@
+/* ==========================================================
+   englishacademy - Hoja de estilos principal
+   Paleta: azul marino, rojo, azul claro (+ blanco y negro)
+   ========================================================== */
+
+
+/* ==========================================================
+   VARIABLES DE COLOR
+   ========================================================== */
+
+:root {
+  --azul: #1B3A5C;        /* color principal: menú, footer, títulos */
+  --rojo: #C8102E;        /* acento: botones, subrayados, errores */
+  --azul-claro: #EEF3F8;  /* fondo general de las páginas */
+  --alto-menu: 90px;      /* altura del menú fijo; la usan la cabecera y el body */
+}
+
+
+/* ==========================================================
+   BASE (body y main)
+   ========================================================== */
+
+* {
+  box-sizing: border-box; /* el padding y el borde no aumentan el ancho de los elementos */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* fuente del sitio; si no existe Arial, usa otra sin serifa */
+  color: #222;                    /* negro suave para el texto */
+  background: var(--azul-claro);
+  padding-top: var(--alto-menu);  /* hueco para que el menú fijo no tape el contenido */
+}
+
+main {
+  padding: 30px 50px;
+}
+
+
+/* ==========================================================
+   CABECERA Y MENÚ FIJO
+   ========================================================== */
+
+.cabecera {
+  position: fixed;         /* se queda arriba al hacer scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--alto-menu);
+  background: var(--azul);
+  display: flex;           /* logo a la izquierda y menú a la derecha */
+  justify-content: space-between;
+  align-items: center;     /* centra verticalmente */
+  padding: 0 50px;
+  z-index: 1000;           /* siempre por encima del contenido */
+}
+
+.logo img {
+  height: 90px;            /* igual que --alto-menu: el logo ocupa toda la altura de la barra */
+  width: auto;             /* mantiene la proporción */
+  display: block;          /* evita el pequeño hueco bajo las imágenes */
+}
+
+.menu {
+  list-style: none;        /* quita los puntos de la lista */
+  display: flex;           /* enlaces en horizontal */
+  gap: 40px;               /* separación entre enlaces */
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 8px 0;
+}
+
+/* Resalta la página actual (clase "activo") y el enlace al pasar el ratón */
+.menu a:hover,
+.menu a.activo {
+  border-bottom: 3px solid var(--rojo);
+}
+
+
+/* ==========================================================
+   FOOTER Y REDES SOCIALES
+   ========================================================== */
+
+/* ===== Redes sociales (iconos SVG) ===== */
+.redes {
+  display: flex;
+  justify-content: center; /* iconos centrados */
+  gap: 20px;
+}
+
+.redes a {
+  color: #fff;               /* los iconos toman este color (currentColor) */
+  display: inline-flex;
+  transition: color 0.2s, transform 0.2s; /* cambio suave al pasar el ratón */
+}
+
+.redes a:hover {
+  color: var(--rojo);
+  transform: translateY(-3px); /* el icono sube un poco */
+}
+
+/* Estilo de línea común a los tres iconos */
+.redes svg {
+  fill: none;                /* sin relleno: solo el trazo */
+  stroke: currentColor;      /* el trazo usa el color del enlace */
+  stroke-width: 2;
+  stroke-linecap: round;     /* extremos redondeados */
+  stroke-linejoin: round;    /* esquinas redondeadas */
+}
+
+/* ===== Pie de página ===== */
+.pie {
+  background: var(--azul);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.pie a {
+  color: #fff;
+}
+
+
+/* ==========================================================
+   PORTADA: NOTICIAS (cargadas desde JSON)
+   ========================================================== */
+
+#contenedor-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* tantas columnas como quepan, mínimo 250px */
+  gap: 20px;
+}
+
+.noticia {
+  background: #fff;
+  padding: 20px;
+  border-left: 4px solid var(--rojo);
+}
+
+.noticia time {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+
+/* ==========================================================
+   PORTADA: SECCIONES EN GENERAL
+   ========================================================== */
+
+main section {
+  margin-bottom: 50px;     /* separación entre secciones */
+}
+
+main h2 {
+  color: var(--azul);
+  border-bottom: 3px solid var(--rojo);
+  display: inline-block;   /* el subrayado solo mide lo que el texto */
+  padding-bottom: 6px;
+}
+
+
+/* ==========================================================
+   PORTADA: HERO Y BOTONES
+   ========================================================== */
+
+/* Hero: imagen de fondo con capa azul para que el texto se lea bien */
+.hero {
+  background:
+    linear-gradient(rgba(27, 58, 92, 0.75), rgba(27, 58, 92, 0.75)), /* capa azul semitransparente */
+    url("../images/foto5.jpeg");  /* la ruta se cuenta desde el CSS, por eso sube un nivel */
+  background-size: cover;         /* la imagen cubre todo el hero */
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  padding: 100px 30px;
+}
+
+.hero h1 {
+  margin-top: 0;
+  font-size: 2.4rem;
+}
+
+/* Botón principal (también se usa en el formulario y en contacto) */
+.boton {
+  display: inline-block;   /* permite dar padding a un enlace */
+  background: var(--rojo);
+  color: #fff;
+  padding: 12px 28px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.boton:hover {
+  background: #a00d25;     /* rojo más oscuro: variación del mismo color */
+}
+
+
+/* ==========================================================
+   PORTADA: TARJETAS DE CURSOS
+   ========================================================== */
+
+/* Rejilla de tarjetas (cursos) */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* se adapta al ancho: 3, 2 o 1 columnas */
+  gap: 20px;
+}
+
+.tarjeta {
+  background: #fff;
+  padding: 20px;
+  border-top: 4px solid var(--azul);
+}
+
+/* Tarjeta de curso con imagen arriba */
+.tarjeta-curso {
+  padding: 0;              /* la imagen llega hasta los bordes */
+  overflow: hidden;        /* recorta lo que se salga de la tarjeta */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-curso:hover {
+  transform: translateY(-5px);                  /* la tarjeta sube al pasar el ratón */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-curso img {
+  display: block;
+  width: 100%;
+  height: 160px;           /* altura fija de la imagen */
+  object-fit: cover;       /* recorta la imagen sin deformarla */
+}
+
+.tarjeta-texto {
+  padding: 20px;
+}
+
+.tarjeta-texto h3 {
+  margin-top: 0;
+  color: var(--azul);
+}
+
+
+/* ==========================================================
+   PORTADA: ¿POR QUÉ ELEGIRNOS?
+   ========================================================== */
+
+.porque {
+  background: var(--azul); /* franja azul de lado a lado de la sección */
+  color: #fff;
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.porque h2 {
+  color: #fff;             /* sustituye el azul de los h2 por blanco */
+}
+
+.ventajas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 4 columnas, bajan a 2 o 1 si falta espacio */
+  gap: 30px;
+  margin-top: 25px;
+}
+
+/* Círculo con el emoji de cada ventaja */
+.icono {
+  display: flex;
+  align-items: center;     /* centra el emoji en vertical */
+  justify-content: center; /* y en horizontal */
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;     /* auto a los lados: centra el círculo */
+  background: rgba(255, 255, 255, 0.12); /* blanco casi transparente */
+  border: 2px solid var(--rojo);
+  border-radius: 50%;      /* lo convierte en círculo */
+  font-size: 2rem;
+}
+
+.ventaja h3 {
+  margin: 0 0 8px;
+}
+
+.ventaja p {
+  margin: 0;
+  line-height: 1.5;        /* más espacio entre líneas */
+}
+
+
+/* ==========================================================
+   GALERÍA Y LIGHTBOX
+   ========================================================== */
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.galeria-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;    /* todas las miniaturas con la misma proporción */
+  object-fit: cover;      /* recorta sin deformar */
+  cursor: pointer;        /* manita: indica que se puede hacer clic */
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+.galeria-grid img:hover {
+  transform: scale(1.03); /* crece un poco al pasar el ratón */
+}
+
+/* Lightbox: oculto por defecto, visible con la clase "abierto" */
+.lightbox {
+  display: none;
+  position: fixed;         /* cubre toda la ventana aunque se haga scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* fondo negro casi opaco */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;           /* por encima del menú (1000) */
+}
+
+.lightbox.abierto {
+  display: flex;           /* la clase "abierto" la añade JavaScript */
+}
+
+.lightbox img {
+  max-width: 80%;
+  max-height: 85%;
+  border-radius: 4px;
+}
+
+/* Botones del lightbox (cerrar, anterior, siguiente) */
+.lb-boton {
+  position: absolute;      /* se colocan respecto al lightbox */
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.lb-boton:hover {
+  color: var(--rojo);
+}
+
+.lb-cerrar { top: 15px; right: 25px; }
+.lb-anterior { left: 15px; top: 50%; transform: translateY(-50%); }   /* centrado vertical */
+.lb-siguiente { right: 15px; top: 50%; transform: translateY(-50%); }
+
+
+/* ==========================================================
+   FORMULARIO DE PRESUPUESTO
+   ========================================================== */
+
+/* Títulos h1 centrados (afecta a todas las páginas con <main>) */
+main h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 700px;        /* ancho máximo del formulario */
+  margin: 0 auto;          /* márgenes automáticos: lo centran */
+}
+
+fieldset {
+  background: #fff;
+  border: 1px solid var(--azul);
+  margin-bottom: 25px;
+  padding: 20px;
+}
+
+legend {
+  color: var(--azul);
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.campo {
+  margin-bottom: 15px;
+}
+
+.campo label {
+  display: block;          /* la etiqueta queda encima del campo */
+  margin-bottom: 5px;
+}
+
+/* Campos de texto y desplegable con el mismo aspecto */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Grupos de radios y casillas */
+.grupo {
+  border: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+.grupo label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Presupuesto total */
+.total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--azul);
+}
+
+/* Mensajes de error de la validación (los rellena JavaScript) */
+.error {
+  display: block;
+  color: var(--rojo);
+  font-size: 0.9rem;
+  min-height: 1.1em;       /* reserva el hueco para que el formulario no "salte" */
+}
+
+.botones {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+/* Los botones de <button> necesitan quitar el borde por defecto */
+button.boton {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.boton-secundario {
+  background: var(--azul);
+}
+
+.boton-secundario:hover {
+  background: #12263d;     /* azul más oscuro: variación del mismo color */
+}
+
+/* Campo con error de validación */
+input.invalido {
+  border: 2px solid var(--rojo);
+}
+
+/* Mensaje de envío correcto */
+.exito {
+  color: #1B3A5C;          /* mismo valor que --azul */
+  font-weight: bold;
+}
+
+select.invalido {
+  border: 2px solid var(--rojo);
+}
+
+
+/* ==========================================================
+   CONTACTO: FICHA, DOCENTES Y MAPA
+   ========================================================== */
+
+/* Ficha con los datos de la academia */
+.ficha {
+  background: #fff;
+  padding: 20px;
+  border-left: 4px solid var(--rojo);
+  font-style: normal;     /* <address> sale en cursiva por defecto */
+  line-height: 1.6;
+}
+
+.tarjeta address {
+  font-style: normal;
+}
+
+/* Tarjetas pequeñas de los docentes, con la foto circular encima */
+.tarjetas-docentes {
+  display: flex;
+  flex-wrap: wrap;           /* si no caben, pasan a otra línea */
+  justify-content: center;   /* las centra en la página */
+  gap: 70px 30px;            /* separación vertical y horizontal */
+  margin-top: 70px;          /* hueco para la foto que sobresale */
+}
+
+.tarjeta-docente {
+  position: relative;        /* la foto se coloca respecto a la tarjeta */
+  width: 340px;
+  padding: 60px 15px 20px;   /* arriba deja sitio a la mitad de la foto */
+  text-align: center;
+}
+
+.tarjeta-docente img {
+  position: absolute;
+  top: -50px;                /* mitad de la foto fuera de la tarjeta */
+  left: 50%;
+  transform: translateX(-50%); /* centra la foto horizontalmente */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;        /* lo que la hace circular */
+  object-fit: cover;         /* recorta sin deformar */
+  border: 4px solid #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+.tarjeta-docente h3 {
+  margin: 0 0 10px;
+  color: var(--azul);
+}
+
+.tarjeta-docente p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;   /* evita que el email se salga de la tarjeta */
+}
+
+/* Mapa (Leaflet): necesita una altura para verse */
+#mapa {
+  height: 450px;
+  margin-top: 15px;
+  position: relative;
+  z-index: 0;   /* evita que los controles del mapa se vean por encima del menú fijo */
+}
+
+.mensaje-ruta {
+  color: var(--azul);
+  font-weight: bold;
+}
+
+
+/* ==========================================================
+   AVISO LEGAL
+   ========================================================== */
+
+.legal {
+  max-width: 800px;        /* ancho de lectura cómodo */
+  margin: 0 auto;          /* centrado */
+  background: #fff;
+  padding: 30px 40px;
+  border-left: 4px solid var(--rojo);
+  line-height: 1.7;
+}
+
+.legal h2 {
+  font-size: 1.2rem;
+  margin: 25px 0 8px;
+  border: none;            /* quita el subrayado rojo de los h2 de la portada */
+  display: block;
+}
+
+.legal h2:first-child {
+  margin-top: 0;
+}
+
+.legal-nota {
+  color: #666;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>englishacademy | Presupuesto</title>
+  <!-- Enlazamos el archivo CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- CABECERA + MENÚ -->
+  <header class="cabecera">
+    <a class="logo" href="../index.html">
+        <img src="../images/logo.png" alt="Logo de English Academy">
+    </a>
+    <!-- Menú de navegación -->
+    <nav>
+      <ul class="menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../views/galeria.html">Galería</a></li>
+        <li><a href="../views/presupuesto.html" class="activo">Presupuesto</a></li>
+        <li><a href="../views/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <h1>Formulario de solicitud</h1>
+
+    <form id="formulario" action="#" method="post" novalidate>
+      
+      <!--Usaremos un fieldset para agrupar los campos el formulario-->
+      <!--Solicitamos datos de contacto-->
+      <fieldset>
+        <legend>Datos de contacto</legend>
+
+        <div class="campo">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+          <span class="error" id="error-nombre"></span>
+        </div>
+        <div class="campo">
+          <label for="apellidos">Apellidos:</label>
+          <input type="text" id="apellidos" name="apellidos" placeholder="Escribe tus apellidos" required>
+          <span class="error" id="error-apellidos"></span>
+        </div>
+        <div class="campo">
+          <label for="telefono">Teléfono de contacto:</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Escribe tu número de teléfono" required>
+          <span class="error" id="error-telefono"></span>
+        </div>
+        <div class="campo">
+          <label for="email">Correo electrónico:</label>
+          <input type="text" id="email" name="email" placeholder="nombre@dominio.com" required>
+          <span class="error" id="error-email"></span>
+        </div>
+      </fieldset>
+
+      <!--Presupuesto-->
+      <fieldset>
+        <legend>Presupuesto</legend>
+
+        <!--Presupuesto:Por edad-->
+        <div class="campo">
+          <label for="producto">Elige tu edad:</label>
+          <select id="producto" name="producto" required>
+            <option value="" data-precio="0">Selecciona una opción</option>
+            <option value="kids" data-precio="40">Kids (6-11 años) - 40€/mes</option>
+            <option value="teens" data-precio="50">Teen (12-17 años) - 50€/mes</option>
+            <option value="adults" data-precio="60">Adults (18+ años) - 60€/mes</option>
+          </select>
+          <span class="error" id="error-producto"></span>
+        </div>
+
+        <!--Modalidad (Grupal o individual):Multiplicar precio-->
+        <fieldset class="grupo">
+          <legend>Modalidad:</legend>
+          <label for="grupal">
+            <input type="radio" id="grupal" name="modalidad" value="grupal" data-factor="1" checked>
+            Clases grupales
+          </label>
+          <label for="individual">
+            <input type="radio" id="individual" name="modalidad" value="individual" data-factor="2">
+            Clases individuales (x2)
+          </label>
+        </fieldset>
+
+        <!--Plazo: duración-->
+        <div class="campo">
+          <label for="plazo">Plazo en meses (1-12):</label>
+          <input type="number" id="plazo" name="plazo" min="1" max="12" value="1" required>
+        </div>
+
+        <!--Extras: casillas que suman al importe final-->
+
+        <fieldset class="grupo">
+          <legend>Elige tus extras:</legend>
+          <label for="extra-diccionario">
+            <input type="checkbox" id="extra-diccionario" name="extras" value="diccionario" data-precio="15">
+            Diccionario (15€)
+          </label>
+          <label for="extra-cuaderno">
+            <input type="checkbox" id="extra-cuaderno" name="extras" value="cuaderno" data-precio="8">
+            Pack de cuadernos (8€)
+          </label>
+          <label for="extra-lapices">
+            <input type="checkbox" id="extra-lapices" name="extras" value="lapices" data-precio="5">
+            Pack de lápices (5€)
+          </label>
+          <label for="extra-digital">
+            <input type="checkbox" id="extra-digital" name="extras" value="digital" data-precio="10">
+            Material digital (10€)
+          </label>
+        </fieldset>
+
+        <!--Total: se actualizará con JavaScript-->
+        <p class="total">
+          Total: <output id="total" for="producto grupal individual plazo extra-diccionario extra-cuaderno extra-lapices extra-digital">0€</output>
+        </p>
+
+      </fieldset>
+
+      <!--Condiciones y envió-->
+      <fieldset>
+        <legend>Aceptación de las condiciones y envío</legend>
+        
+        <label for="privacidad">
+          <input type="checkbox" id="privacidad" name="privacidad" required>He leído la <a href="../views/aviso-legal.html" target="_blank" rel="noopener">política de privacidad</a>
+        </label>
+        <span class="error" id="error-privacidad"></span>
+        
+        <div class="botones">
+          <button type="submit" class="boton">Enviar formulario</button>
+          <button type="reset" class="boton boton-secundario">Borrar formulario</button>
+        </div>
+      </fieldset>
+
+    </form>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+    <p>Avenida de Buendía, Oficina 73, Guadalajara.</p>
+    <!-- Redes sociales (iconos SVG) -->
+    <p class="redes">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+          <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+        </svg>
+      </a>
+    </p>
+    <!-- Enlaces de privacidad -->
+    <p><a href="../views/aviso-legal.html">Aviso legal</a></p>
+  </footer>
+
+  <script src="../js/presupuesto.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>englishacademy | Contacto</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Estilos de Leaflet (mapa) y del plugin de rutas -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.css">
+</head>
+<body>
+
+  <!-- CABECERA + MENÚ -->
+  <header class="cabecera">
+    <a class="logo" href="../index.html">
+        <img src="../images/logo.png" alt="Logo de English Academy">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="presupuesto.html">Presupuesto</a></li>
+        <li><a href="contacto.html" class="activo">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+   <h1>Contáctanos</h1>
+
+   <!--Docentes-->
+  <section id="docentes">
+     <h2>Nuestros docentes</h2>
+     <div class="tarjetas-docentes">
+       <article class="tarjeta tarjeta-docente">
+         <img src="../images/docente1.jpg" alt="Foto de Andrés Arteaga">
+         <h3>Andrés Arteaga</h3>
+         <address>
+           <p><a href="mailto:andres.arteaga@englishacademy.com">andres.arteaga@englishacademy.com</a></p>
+           <p><a href="tel:+34624335411">624 33 54 11</a></p>
+         </address>
+       </article>
+       <article class="tarjeta tarjeta-docente">
+         <img src="../images/docente2.jpg" alt="Foto de Hannah Bauer">
+         <h3>Hannah Bauer</h3>
+         <address>
+           <p><a href="mailto:hannah.bauer@englishacademy.com">hannah.bauer@englishacademy.com</a></p>
+           <p><a href="tel:+34621106592">621 10 65 92</a></p>
+         </address>
+       </article>
+     </div>
+   </section>
+
+   <!--Datos de la academia-->
+   <section id="datos-academia">
+      <h2>Nuestra academia</h2>
+      <address class="ficha">
+        <p><strong>Dirección:</strong> Avenida de Buendía, Oficina 73, Guadalajara</p>
+        <p><strong>Teléfono:</strong> <a href="tel:+34949516007">949 51 60 07</a></p>
+        <p><strong>Email:</strong> <a href="mailto:englishacademy@gmail.com">englishacademy@gmail.com</a></p>
+        <p><strong>Horario:</strong> de lunes a viernes, de 9:00 a 21:00</p>
+      </address>
+   </section>
+
+   <!-- Mapa-->
+   <section id="ubicacion">
+      <h2>¿Cómo llegar?</h2>
+      <p>Calcula la ruta desde tu ubicación hasta la academia.</p>
+      <button type="button" id="btn-ruta" class="boton">Calcular ruta desde mi ubicación</button>
+      <p id="mensaje-ruta" class="mensaje-ruta"></p>
+      <div id="mapa"></div>
+   </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+    <p>Avenida de Buendía, Oficina 73, Guadalajara.</p>
+    <!-- Redes sociales (iconos SVG) -->
+    <p class="redes">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+          <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+        </svg>
+      </a>
+    </p>
+    <!-- Enlaces de privacidad -->
+    <p><a href="../views/aviso-legal.html">Aviso legal</a></p>
+  </footer>
+
+  <!--vinculamos el leaflet para la ubicación, el plugin de rutas y nuestro script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+  <script src="../js/mapa.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>englishacademy | Galería</title>
+  <!-- Enlazamos el archivo CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- CABECERA + MENÚ -->
+  <header class="cabecera">
+    <a class="logo" href="../index.html">
+        <img src="../images/logo.png" alt="Logo de English Academy">
+    </a>
+    <!-- Menú de navegación -->
+    <nav>
+      <ul class="menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../views/galeria.html" class="activo">Galería</a></li>
+        <li><a href="../views/presupuesto.html">Presupuesto</a></li>
+        <li><a href="../views/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <h1>Galería</h1>
+
+    <div class="galeria-grid">
+      <img src="../images/foto1.avif" alt="Adultos en clase">
+      <img src="../images/foto2.avif" alt="Niños aprendiendo">
+      <img src="../images/foto3.avif" alt="Preparación para exámenes">
+      <img src="../images/foto4.avif" alt="Aprender con juegos">
+      <img src="../images/foto5.jpeg" alt="Instalaciones">
+      <img src="../images/foto6.jpeg" alt="clases didácticas">
+    </div>
+
+    <!-- lightbox: capa oscura al abrir la imagen-->
+    <div id="lightbox" class="lightbox">
+      <button id="cerrar" class="lb-boton lb-cerrar" type="button" aria-label="Cerrar">&times;</button>
+      <button id="anterior" class="lb-boton lb-anterior" type="button" aria-label="Foto anterior">&#10094;</button>
+      <img id="lightbox-img" src="../images/foto1.avif" alt="Foto ampliada">
+      <button id="siguiente" class="lb-boton lb-siguiente" type="button" aria-label="Foto siguiente">&#10095;</button>
+    </div>
+
+  </main>
+
+ 
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+    <p>Avenida de Buendía, Oficina 73, Guadalajara.</p>
+    <!-- Redes sociales (iconos SVG) -->
+    <p class="redes">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+          <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+        </svg>
+      </a>
+    </p>
+    <!-- Enlaces de privacidad -->
+    <p><a href="../views/aviso-legal.html">Aviso legal</a></p>
+  </footer>
+
+  <!--Anexamos el jQuery y nuestro Script-->
+  <script src="../js/jquery-4.0.0.min.js"></script>
+  <script src="../js/galeria.js"></script>
+</body>
+</html>
