@@ -173,10 +173,10 @@ function validarProducto() {
 }
 
 //Usamos la función preventDefault por si algo no es valido al enviar
-formulario.addEventListener("submit", function (evento){
+formulario.addEventListener("submit", function (evento) {
   evento.preventDefault();
 
-  //almacenamos las funciones en variables para hacer mas sencilla la comprobacion
+  // Ejecutamos TODAS las validaciones (así se muestran todos los errores a la vez)
   const nombreOk = validarNombre();
   const apellidosOk = validarApellidos();
   const telefonoOk = validarTelefono();
@@ -185,8 +185,14 @@ formulario.addEventListener("submit", function (evento){
   const privacidadOk = validarPrivacidad();
 
   if (nombreOk && apellidosOk && telefonoOk && emailOk && productoOk && privacidadOk) {
-    mensajeEnvio.textContent = "¡Solicitud enviada! Te contactaremos pronto. Presupuesto: " + total.textContent;
-    
+    // Guardamos el total ANTES de vaciar el formulario
+    const presupuestoEnviado = total.textContent;
+
+    // Devolvemos el formulario a su estado inicial (dispara el evento "reset")
+    formulario.reset();
+
+    // El reset borra el mensaje de envío, así que lo ponemos de nuevo
+    mensajeEnvio.textContent = "¡Solicitud enviada! Te contactaremos pronto. Presupuesto: " + presupuestoEnviado;
   } else {
     mensajeEnvio.textContent = "";
   }

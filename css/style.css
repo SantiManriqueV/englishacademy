@@ -30,10 +30,14 @@ body {
   color: #222;                    /* negro suave para el texto */
   background: var(--azul-claro);
   padding-top: var(--alto-menu);  /* hueco para que el menú fijo no tape el contenido */
+  min-height: 100vh;              /* el body mide como mínimo toda la altura de la ventana */
+  display: flex;                  /* layout en columna: cabecera, main y footer */
+  flex-direction: column;
 }
 
 main {
   padding: 30px 50px;
+  flex: 1;                        /* el main ocupa todo el espacio libre y empuja el footer abajo */
 }
 
 
@@ -572,4 +576,13 @@ select.invalido {
 .legal-nota {
   color: #666;
   font-size: 0.9rem;
+}
+
+.galeria-grid img {
+  height: auto;       /* con aspect-ratio, la altura se calcula sola */
+}
+
+.lightbox img {
+  width: auto;        /* la foto ampliada conserva su proporción */
+  height: auto;       /* aunque cada foto tenga un tamaño distinto */
 }
